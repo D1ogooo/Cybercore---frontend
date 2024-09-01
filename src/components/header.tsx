@@ -1,0 +1,30 @@
+import { CartWidget } from "../components/cart-widghet";
+import { Search } from 'lucide-react'
+import { Link } from "react-router-dom";
+
+export function Header() {
+  return (
+   <div className="flex items-center justify-between color my-5 w-[90%] h-auto mx-auto">
+
+     <Link to='/' className="text-2xl font-extrabold text-gray-700">
+      cybercore
+     </Link>
+
+     <form className="flex w-[50%] items-center gap-3 rounded-full bg-zinc-900 px-5 py-3 ring-zinc-700">
+      <Search className="w-5 h-5 text-zinc-500"/>
+      <input placeholder="Buscar produtos..." className="flex-1 bg-transparent text-sm outline-0 text-zinc-500 border-none " />
+     </form>
+
+    <div className="flex items-center gap-4 text-white">
+
+     <Link to='/' className="flex items-center gap-2 hover:underline">
+      <img src="https://via.placeholder.com/54?text=Olá" className="h-10 w-10 rounded-full" width={54} height={54} alt=""/>
+     </Link>
+     <span className="text-sm">Entre ou <br></br><Link to='/signup'>Cadastre-se</Link></span>
+
+     <div className="w-px h-4 bg-zinc-400"/>
+     <CartWidget width={30} height={30}/>
+    </div>
+   </div>
+  )
+}
