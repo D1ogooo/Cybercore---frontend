@@ -2,9 +2,10 @@
 
 📋 Sobre o projeto
 
-A ideia de criar o drum notes era poder catalogar cada video na qual eu precisava ver para aprender bateria,
-me veio a ideia de criar um sistema onde eu conseguisse deixar organizado cada video que eu já tinha visto e os videos que eu teria que ver,
-normalmente existe uma vasta quantidade de conteúdos do instrumento por ai então foi justamente nessa ideia de me organizar / auxiliar que resolvi cria-lo.
+A ideia de criar o Cybercore era poder criar um site de perifericos de computador, estava lembrando
+de lugares que tinham esses sitemas que facilitam na busca do cliente e pensei em fazer o meu, esse projeto 
+também serve bastante para poder me exercitar na nova tecnologia que estou estudando, o prisma, alem de também
+poder me desenvolver em bancos relacionais como postgreesql
 
 💻 Tecnologias Utilizadas:
 
@@ -14,5 +15,4 @@ normalmente existe uma vasta quantidade de conteúdos do instrumento por ai ent�
 - TailwindCSS
 - React-router-dom
 - Chackra-ui
-- Axios
 ```
