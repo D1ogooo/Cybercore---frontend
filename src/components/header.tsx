@@ -18,13 +18,16 @@ export function Header() {
     <div className="flex items-center gap-4 text-white">
 
      <Link to='/' className="flex items-center gap-2 hover:underline">
-      <img src="https://via.placeholder.com/54?text=Olá" className="h-10 w-10 rounded-full" width={54} height={54} alt=""/>
+      <img src="https://github.com/D1ogooo.png" className="h-10 w-10 rounded-full" width={54} height={54} alt=""/>
+      {/* https://via.placeholder.com/54?text=Olá */}
      </Link>
-     <span className="text-sm">Entre ou <br></br><Link to='/signup'>Cadastre-se</Link></span>
+     {/* <span className="text-sm">Entre ou <br></br><Link to='/signup'>Cadastre-se</Link></span> */}
+     <p className="text-sm">Bem vindo <br></br><span className="text-roxo">Diogo</span></p>
 
      <div className="w-px h-4 bg-zinc-400"/>
      <CartWidget width={30} height={30}/>
     </div>
+    
    </div>
   )
 }

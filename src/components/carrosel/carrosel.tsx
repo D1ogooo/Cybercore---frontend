@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, type SetStateAction } from "react";
 import { Box, Flex, HStack, Image, Stack, Text } from "@chakra-ui/react";
 
 export function Carrosel(){
@@ -50,14 +50,14 @@ export function Carrosel(){
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   }, []);
 
-  const handleMouseDown = useCallback((e) => {
+  const handleMouseDown = useCallback((e: { clientX: SetStateAction<number>; preventDefault: () => void; }) => {
     setDragging(true);
     setDragStartX(e.clientX);
     e.preventDefault();
   }, []);
 
   const handleMouseMove = useCallback(
-    (e) => {
+    (e: { clientX: number; preventDefault: () => void; }) => {
       if (dragging) {
         const diffX = e.clientX - dragStartX;
         setDragOffset(diffX);
