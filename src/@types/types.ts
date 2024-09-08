@@ -16,6 +16,17 @@ export interface ProductType {
 }
 
 export interface AuthProviderType {
- children: ReactNode;
+  children: ReactNode;
 }
 
+export interface CartWidgetType { 
+  width?: number;
+  height?: number;
+}
+
+export interface DadosCardItemsType {
+  id: number;
+  info: string;
+  preco: string;
+  image: string;
+}

@@ -1,5 +1,7 @@
 import { useCallback, useState, type SetStateAction } from "react";
 import { Box, Flex, HStack, Image, Stack, Text } from "@chakra-ui/react";
+import firstImage from '/public/images/2510.jpg'
+import secondmage from '/public/images/2816.jpg'
 
 export function Carrosel(){
   const SLIDE_CHANGE_THRESHOLD = 100;
@@ -25,14 +27,10 @@ export function Carrosel(){
 
   const slides = [
     {
-      img: "https://images.pexels.com/photos/2599537/pexels-photo-2599537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      label: "First Slide",
-      description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+      img: `${firstImage}`,
     },
     {
-      img: "https://images.pexels.com/photos/2714581/pexels-photo-2714581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      label: "Second Slide",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      img: `${secondmage}`,
     }
   ];
 

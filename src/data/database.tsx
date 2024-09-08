@@ -1,4 +1,4 @@
-import type { DataType } from '../@types/types';
+import type { DadosCardItemsType, DataType } from '../@types/types';
 import firstImage from '../../public/produtos/1.png'
 import secondImage from '../../public/produtos/5.png'
 import thirdImage from '../../public/produtos/7.png'
@@ -25,4 +25,43 @@ export const Data: DataType[] = [
    title: 'Cadeira Gamer SuperFrame Hybrid, Mesh, Altura Ajustável, Preta',
    value: '559,89',
   },
+]
+
+export const DataCardItems: DadosCardItemsType[] = [
+ {
+  id: 0,
+  info: 'Cadeira Gamer SuperFrame Hybrid, Mesh, Altura Ajustável, Preta',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
+ {
+  id: 0,
+  info: 'Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
+ {
+  id: 0,
+  info: 'Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
+ {
+  id: 0,
+  info: 'Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
+ {
+  id: 0,
+  info: 'Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
+ {
+  id: 0,
+  info: 'Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S',
+  preco: 'R$ 999,90',
+  image: `${secondImage}`,
+ },
 ]
