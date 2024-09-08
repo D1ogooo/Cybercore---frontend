@@ -1,7 +1,20 @@
+import IncrementIcon from '../../public/images/IncrementIcon.svg'
+import DecrementIcon from '../../public/images/DecrementIcon.svg'
+import CartIconWhite from '../../public/images/IconCard_white.svg'
+
 export function Counter() {
   return (
    <>
-    <h1 className="text-red-500">Contador</h1>
+    <div className="flex justify-between items-center ">
+     <img src={IncrementIcon} alt="" className='cursor-pointer'/>
+      <p className='text-baseTitle text-center text-base font-normal leading-[130%]'>0</p>
+     <img src={DecrementIcon} alt="" className='cursor-pointer'/>
+     <button className='flex p-[0.5rem] justify-center items-center gap-[0.5rem]
+      ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer'
+     >
+     <img src={CartIconWhite} alt="" className='w-[1.375rem] h-[1.375rem]'/>
+    </button>
+    </div>
    </>
   )
 }

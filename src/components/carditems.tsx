@@ -9,8 +9,8 @@ export function CardItems({ info, preco, image }: DadosCardItemsType) {
     <img src={image} alt="" className='w-[90%] h-auto'/>
    </div>
    <div className='w-[50%]'>
-    <h3 className='text-cinzaClaro h-[6rem]'>{info}</h3>
-    <p className='text-cinzaEscuro pt-2'>{preco}</p>
+    <h3 className='text-cinzaClaro '>{info}</h3>
+    <p className='text-cinzaClaro pt-2 font-medium'>{preco}</p>
     <Counter />
    </div>
    </div>
