@@ -1,6 +1,6 @@
 import IncrementIcon from '../../public/images/IncrementIcon.svg'
 import DecrementIcon from '../../public/images/DecrementIcon.svg'
-import CartIconWhite from '../../public/images/IconCard_white.svg'
+import { Trash2 } from 'lucide-react'
 
 export function Counter() {
   return (
@@ -12,7 +12,7 @@ export function Counter() {
      <button className='flex p-[0.5rem] justify-center items-center gap-[0.5rem]
       ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer'
      >
-     <img src={CartIconWhite} alt="" className='w-[1.375rem] h-[1.375rem]'/>
+     <Trash2 height={22}/>
     </button>
     </div>
    </>

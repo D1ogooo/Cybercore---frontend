@@ -6,7 +6,7 @@ const AuthContext = createContext({})
 function AuthProvider({ children }: AuthProviderType) {
  const [data, setdata] = useState<DataAuthType | undefined>(undefined)
  return (
-  <AuthContext.Provider value={{ data: true }}>
+  <AuthContext.Provider value={{ data: false }}>
    {children}
   </AuthContext.Provider>
  )

@@ -32,10 +32,18 @@ export function CartWidget({ width = 2, height = 2, ...rest}: CartWidgetType) {
      </div>
       ))}
       {/* <MenuDivider /> */}
-      <MenuItem color={'#27272A'} className='flex gap-2 mb-1 mt-1'>
+      {/* <MenuItem color={'#27272A'} className='flex gap-2 mb-1 mt-1'>
        <Trash2/>
-       <p className='font-bold text-cinzaClaro'>Esvaziar carrinho</p>
-      </MenuItem>
+      </MenuItem> */}
+     <div className='flex items-center justify-between pl-4 pr-4 pb-1 pt-4'>
+      <button className='font-bold text-cinzaClaro flex gap-1'>
+       <Trash2/>
+       Esvaziar carrinho
+      </button>
+      <button className='font-bold text-cinzaClaro flex'>
+       Realizar compra
+      </button>
+      </div>
      </MenuList>
     </Menu>
    </>
