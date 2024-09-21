@@ -1,10 +1,13 @@
 import { CartWidget } from "../components/cart-widghet";
 import { Search } from 'lucide-react'
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export function Header() {
+  const { loggout } = useAuth()
+
   return (
-   <div className="flex items-center justify-between color my-5 w-[90%] h-auto mx-auto">
+   <div className="flex items-center justify-evenly color my-5 w-[90%] h-auto mx-auto">
 
      <Link to='/' className="text-2xl font-extrabold text-gray-700">
       cybercore
@@ -27,7 +30,7 @@ export function Header() {
      <div className="w-px h-4 bg-zinc-400"/>
      <CartWidget width={30} height={30}/>
     </div>
-    
+     <button className="text-red-500 font-medium" onClick={() => loggout()}>Sair</button>
    </div>
   )
 }

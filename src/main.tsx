@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
  <StrictMode>
   <ChakraProvider theme={customTheme}>
    <AuthProvider>
-    <Router />
+    <Router/>
    </AuthProvider>
   </ChakraProvider>
  </StrictMode>,

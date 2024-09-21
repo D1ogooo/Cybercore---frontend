@@ -36,18 +36,19 @@ export function Product({ info }: ProductType) {
      isOpen={isOpen}
      motionPreset='slideInBottom'
     >
-   <ModalOverlay />
-    <ModalContent>
-   <ModalHeader>Modal Title</ModalHeader>
-  <ModalCloseButton />
+   <ModalOverlay bg='#0000007f' />
+    <ModalContent bg='#09090B' color='white'>
+   <ModalCloseButton />
    <ModalBody>
+    <div className="w-[30rem] h-[20rem] flex">
+     <section className="w-[50%] flex p-8">
+      <img src={info.image} alt={info.title} className="w-full h-auto mx-auto"/>
+     </section>
+     <section className="w-[50%]">
+      
+     </section> 
+    </div>
    </ModalBody>
-  <ModalFooter>
-  <Button colorScheme='blue' mr={3} onClick={onClose}>
-   Close
-  </Button>
-  <Button variant='ghost'>Secondary Action</Button>
-  </ModalFooter>
   </ModalContent>
   </Modal>
   </div>

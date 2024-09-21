@@ -12,7 +12,7 @@ function DashBoard() {
 
    <section className="flex items-center w-[100%] gap-2">
     {Data.map((info) => (
-     <Product info={info}/>
+     <Product info={info} key={info.key}/>
     ))}
    </section>
   </main>

@@ -4,11 +4,20 @@ export interface DataType {
   image: string;
   title: string;
   value: string;
-  key: string;
+  key: number;
 }
 
-export interface DataAuthType {
-  data: boolean;
+export interface AuthData {
+  user?: {
+   id: string;
+   name: string;
+  } 
+  token?: string;
+}
+
+export interface ContextType extends Pick<AuthData,'user'> {
+ loggout: () => void;
+ session: (email: string, password: string) => Promise<void>
 }
 
 export interface ProductType {
@@ -29,4 +38,15 @@ export interface DadosCardItemsType {
   info: string;
   preco: string;
   image: string;
+}
+
+export interface LoginType {
+  email: string;
+  password: string;
+}
+
+export interface RegisterType {
+  name: string;
+  email: string;
+  password: string;
 }
