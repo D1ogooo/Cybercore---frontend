@@ -11,4 +11,4 @@ function Pagina_404() {
   )
 }
 
-export default Pagina_404
+export { Pagina_404 }

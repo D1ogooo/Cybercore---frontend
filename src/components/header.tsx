@@ -1,7 +1,8 @@
-import { CartWidget } from "../components/cart-widghet";
-import { Search } from 'lucide-react'
-import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-router-dom";
+import { CartWidget } from "../components/cart-widghet";
+import { Favorite } from "../components/favorite-widghet";
+import { Search } from 'lucide-react'
 
 export function Header() {
   const { loggout } = useAuth()
@@ -28,7 +29,11 @@ export function Header() {
      <p className="text-sm">Bem vindo <br></br><span className="text-roxo">Diogo</span></p>
 
      <div className="w-px h-4 bg-zinc-400"/>
-     <CartWidget width={30} height={30}/>
+     <section className="flex items-center">
+      <CartWidget width={30} height={30}/>
+      <Favorite width={30} height={30}/>
+      {/* <LucideHeart width={30} height={30}/> */}
+     </section>
     </div>
      <button className="text-red-500 font-medium" onClick={() => loggout()}>Sair</button>
    </div>

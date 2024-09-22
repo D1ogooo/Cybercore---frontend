@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import SignIn from '../pages/Auth/SignIn'
-import SignUp from '../pages/Auth/SignUp'
-import Pagina_404 from '../pages/NotFoundPage'
+import { Pagina_404 } from '../pages/NotFoundPage'
+import { SignIn } from '../pages/Auth/SignIn'
+import { SignUp } from '../pages/Auth/SignUp'
 
 export function AuthRoutes() {
  return (

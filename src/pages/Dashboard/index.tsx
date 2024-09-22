@@ -19,4 +19,4 @@ function DashBoard() {
  )
 }
 
-export default DashBoard
+export { DashBoard }

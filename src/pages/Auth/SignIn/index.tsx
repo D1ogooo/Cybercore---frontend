@@ -66,4 +66,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export { SignIn }

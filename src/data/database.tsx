@@ -26,7 +26,7 @@ export const Data: DataType[] = [
   {
    image: `${forImage}`,
    title: 'Cadeira Gamer SuperFrame Hybrid, Mesh, Altura Ajustável, Preta',
-   value: '559,89',
+   value: 'R$ 559,89',
    key: 3,
   },
 ]
