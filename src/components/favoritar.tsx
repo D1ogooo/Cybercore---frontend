@@ -1,18 +1,16 @@
-import IncrementIcon from '../../public/images/IncrementIcon.svg'
-import DecrementIcon from '../../public/images/DecrementIcon.svg'
-import { Trash2 } from 'lucide-react'
+import { Heart } from 'lucide-react'
+import { api } from '../service/http'
 
 export function Favoritar() {
+  function handleFavorite (){
+   api.post('/')
+  }
+
   return (
    <>
-    <div className="flex justify-between items-center ">
-     <img src={IncrementIcon} alt="" className='cursor-pointer'/>
-      <p className='text-baseTitle text-center text-base font-normal leading-[130%]'>0</p>
-     <img src={DecrementIcon} alt="" className='cursor-pointer'/>
-     <button className='flex p-[0.5rem] justify-center items-center gap-[0.5rem]
-      ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer'
-     >
-     <Trash2 height={22}/>
+    <div className="flex justify-between items-center">
+    <button type='button' onClick={handleFavorite}>
+     <Heart className='cursor-pointer'/>
     </button>
     </div>
    </>

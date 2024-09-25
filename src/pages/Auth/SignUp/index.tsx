@@ -3,6 +3,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import BackgroundImage from "../../../../public/images/unsplash_YI_9SivVt_s.png";
 import ComputadorImage from '../../../../public/images/configurar.png'
+import { Spinner } from '@chakra-ui/react'
 import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
 
 function SignUp() {
@@ -12,11 +13,13 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passwordEye, setPasswordEye] = useState<boolean>()
   const [confirmPasswordEye, setConfirmPasswordEye] = useState<boolean>()
+  const [spinner, setSpinner] = useState<boolean>(false)
   const { register } = useAuth()
   const navigate = useNavigate()
 
   async function handleSubmit(e: { preventDefault: () => void; }) {
    e.preventDefault()
+   setSpinner(true)
    if(!name || !email || !password || !confirmPassword) {
     alert('Favor declarar todos os dados')
    }
@@ -26,6 +29,7 @@ function SignUp() {
    })
    .catch ((error) => {
     alert(error)
+    setSpinner(false)
    })
   }
 

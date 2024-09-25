@@ -1,23 +1,25 @@
 import type { ReactNode } from "react";
 
 export interface DataType {
-  image: string;
-  title: string;
-  value: string;
-  key: number;
+  imagem: string;
+  sobre: string;
+  preco: string;
+  key: string;
 }
 
 export interface AuthData {
   user?: {
-   id: string;
-   name: string;
-  } 
+    id: string;
+    name: string;
+  };
   token?: string;
 }
 
-export interface ContextType extends Pick<AuthData,'user'> {
- loggout: () => void;
- session: (email: string, password: string) => Promise<void>
+export interface ContextType extends Pick<AuthData, 'user'> {
+  loggout: () => void;
+  session: (data: LoginType) => Promise<void>;
+  register: (data: RegisterType) => Promise<void>;
+  cargo: "usuario" | "admin";
 }
 
 export interface ProductType {
@@ -28,7 +30,7 @@ export interface AuthProviderType {
   children: ReactNode;
 }
 
-export interface CartWidgetType { 
+export interface CartWidgetType {
   width?: number;
   height?: number;
 }
@@ -45,8 +47,16 @@ export interface LoginType {
   password: string;
 }
 
+export interface DeleteItemType {
+  id: string;
+}
+
 export interface RegisterType {
   name: string;
   email: string;
   password: string;
+}
+
+export interface DecodedTokenType {
+  role: "usuario" | "admin";
 }

@@ -18,7 +18,7 @@ export function Favorite({ width = 2, height = 2, ...rest}: CartWidgetType) {
     transition='all 0.2s'
     borderRadius='md'
    >
-   <LucideHeart {...rest} width={width} height={height}/>
+   <LucideHeart {...rest} width={width} height={height} />
     </MenuButton>
      <MenuList className='w-[28rem]'>
      {DataCardItems.map((data) => (

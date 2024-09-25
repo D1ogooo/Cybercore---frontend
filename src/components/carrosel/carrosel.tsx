@@ -1,5 +1,5 @@
 import { useCallback, useState, type SetStateAction } from "react";
-import { Box, Flex, HStack, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import firstImage from '/public/images/2510.jpg'
 import secondmage from '/public/images/2816.jpg'
 
@@ -110,35 +110,39 @@ export function Carrosel(){
           {...carouselStyle}
         >
           {slides.map((slide, sid) => (
-            <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
-              <Text
-                color="white"
-                fontSize="xs"
-                p=".5rem .75rem"
-                pos="absolute"
-                top="0"
-              >
-              </Text>
-              <Image
-                src={slide.img}
-                alt="carousel image"
-                boxSize="full"
-                style={{borderRadius: '.3125rem'}}
-                backgroundSize="cover"
-              />
-              <Stack
-                p=".5rem .75rem"
-                pos="absolute"
-                bottom="1.5rem"
-                textAlign="center"
-                w="full"
-                mb="8"
-                color="white"
-              >
-                <Text fontSize="2xl">{slide.label}</Text>
-                <Text fontSize="lg">{slide.description}</Text>
-              </Stack>
-            </Box>
+            <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none" pos="relative">
+            <Text
+              color="white"
+              fontSize="xs"
+              p=".5rem .75rem"
+              pos="absolute"
+              top="0"
+            >
+            </Text>
+            <Box
+              width="100%"
+              height="100%"
+              backgroundImage={`url(${slide.img})`}
+              backgroundColor="rgba(0, 0, 0, 0.1)"
+              backgroundBlendMode="saturation"
+              backgroundRepeat="no-repeat"
+              backgroundSize="cover"
+              backgroundAttachment="-moz-initial"
+              borderRadius=".3125rem"
+            />
+            <Stack
+              p=".5rem .75rem"
+              pos="absolute"
+              bottom="1.5rem"
+              textAlign="center"
+              w="full"
+              mb="8"
+              color="white"
+            >
+              <Text fontSize="2xl">{slide.label}</Text>
+              <Text fontSize="lg">{slide.description}</Text>
+            </Stack>
+          </Box>
           ))}
         </Flex>
         <Text {...arrowStyles} left="0" onClick={prevSlide}>
