@@ -4,7 +4,7 @@ import { Product } from "../../components/modal";
 import { api } from "../../service/http";
 
 function DashBoard() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   useEffect(() => {
     api.get('/products/list')

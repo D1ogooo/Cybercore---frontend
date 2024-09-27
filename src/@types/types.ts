@@ -24,6 +24,13 @@ export interface ContextType extends Pick<AuthData, 'user'> {
 
 export interface ProductType {
   info: DataType;
+  key: string;
+}
+
+export interface ProductDetailtype {
+ imagem: string;
+ sobre: string;
+ preco: string;
 }
 
 export interface AuthProviderType {

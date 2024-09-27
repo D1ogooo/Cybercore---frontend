@@ -9,20 +9,19 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 export function Product({ info }: ProductType) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
   const { cargo } = useAuth()
   const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
 
   return (
    <div className="pr-[-1.25rem] pl-[1.25rem]">
-    <button type='button' 
+    <Link to={`/productDetail/${info.id}`}
      className="flex  flex-col h-auto w-[17rem] gap-[.5rem]
    border-hrColor p-0 mt-5 cursor-pointer" 
-     onClick={onOpen}
     >
-    <button type='button' className="absolute z-50" onClick={(e) => e.stopPropagation()}>
+    <button type='button' className="z-50" onClick={(e) => e.stopPropagation()}>
      {cargo === "usuario" ?
       <ShoppingBasket height={32} width={32} className="cursor-pointer bg-hrColor p-[.3125rem] rounded-[.9375rem]" color="#fff"/>
        :
@@ -32,33 +31,7 @@ export function Product({ info }: ProductType) {
     <img src={`${apiImage}${info.imagem}`} alt={info.sobre} className="flex w-[9.5rem] h-[9.5rem] justify-center items-center mx-auto flex-shrink-0"/>
      <h3 className="text-cinzaClaro text-left font-medium">{info.sobre}</h3>
      <p className="text-cinzaEscuro w-full mx-auto">{info.preco}</p>
-    </button>
-
-    <Modal
-     isCentered
-     onClose={onClose}
-     isOpen={isOpen}
-     motionPreset='slideInBottom'
-    >
-   <ModalOverlay bg='#0000007f' />
-    <ModalContent bg='#09090B' color='white'>
-   <ModalCloseButton />
-   <ModalBody>
-    <div className="w-[30rem] h-[20rem] flex">
-     <section className="w-[50%] flex p-8">
-      <img 
-       src={`${apiImage}${info.imagem}`}
-       alt={info.sobre}
-       className="w-full h-auto mx-auto"
-      />
-     </section>
-     <section className="w-[50%]">
-      
-     </section> 
-    </div>
-   </ModalBody>
-  </ModalContent>
-  </Modal>
+    </Link>
   </div>
  )
 }

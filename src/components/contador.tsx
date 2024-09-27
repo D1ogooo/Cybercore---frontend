@@ -2,12 +2,12 @@ import IncrementIcon from "../../public/images/IncrementIcon.svg";
 import DecrementIcon from "../../public/images/DecrementIcon.svg";
 import { Trash2 } from "lucide-react";
 
-export function Counter() {
+export function Counter(){
 	return (
 		<>
-			<div className="flex justify-between items-center ">
+			<div className="flex justify-start gap-5 items-center w-[100%] pr-2">
 				<img src={IncrementIcon} alt="" className="cursor-pointer" />
-				<p className="text-baseTitle text-center text-base font-normal leading-[130%]">
+				<p className="text-baseTitle text-center text-base font-normal leading-[130%] pl-2 pr-2">
 					0
 				</p>
 				<img src={DecrementIcon} alt="" className="cursor-pointer" />
