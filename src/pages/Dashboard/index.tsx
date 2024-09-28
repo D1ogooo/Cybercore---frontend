@@ -4,7 +4,7 @@ import { Product } from "../../components/modal";
 import { api } from "../../service/http";
 
 function DashBoard() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     api.get('/products/list')
@@ -18,12 +18,12 @@ function DashBoard() {
   }, []);
 
   return (
-    <main className="flex flex-col h-20 mx-auto w-[90%] gap-8">
-      <section className="w-full">
+    <main className="flex flex-col mx-auto w-[90%] gap-8 py-10">
+      <section className="w-full mb-5">
         <Carrosel />
       </section>
       <h2 className="text-2xl font-extrabold text-gray-700">Mais vendidos</h2>
-      <section className="flex">
+      <section className="flex flex-wrap justify-start">
         {data?.map((info) => (
           <Product info={info} key={info.id} />
         ))}
