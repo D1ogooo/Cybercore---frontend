@@ -4,12 +4,13 @@ import { Counter } from "../../components/contador";
 import { api } from "../../service/http";
 import { useParams } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
+import { Trash2 } from "lucide-react";
 
 function ProductDetail() {
 	const [data, setData] = useState<ProductDetailtype>({});
 	const [loading, setLoading] = useState<boolean>(true);
-	const { id } = useParams();
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
+	const { id } = useParams();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -27,6 +28,16 @@ function ProductDetail() {
 		fetchData();
 	}, [id]);
 
+  // function handleDeleteProduct ({ id }: { id: string }) {
+	// 	api.post(`/products/delete/${id}`)
+	// 	.then(() => {
+	// 	 window.location.reload()
+	// 	})
+	// 	.catch(() => {
+	// 	 return alert('error')
+	// 	})
+	// }
+
 	if (loading) {
 		return (
 			<div className="flex items-center justify-center h-screen">
@@ -37,7 +48,7 @@ function ProductDetail() {
 
 	return (
 		<div className="flex items-center justify-center overflow-x-auto mt-[10rem]">
-			<div className="flex justify-center items-center space-x-8 h-[25rem] rounded-md p-6">
+			<div className="flex justify-center items-center space-x-8 h-[30rem] rounded-md p-6">
 				<section className="flex justify-center items-center p-[2rem]">
 					<img
 						src={`${apiImage}${data.imagem}`}
@@ -52,8 +63,15 @@ function ProductDetail() {
 						</h3>
 						<p className="text-cinzaEscuro w-full mx-auto">{data.preco}</p>
 					</div>
-					<Counter />
 				</section>
+					<button
+					// onClick={handleDeleteProduct}
+					type="button"
+					className="flex p-[0.5rem] justify-center items-center gap-[0.5rem]
+      ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer"
+				>
+					<Trash2 height={22}/>
+				</button>
 			</div>
 		</div>
 	);

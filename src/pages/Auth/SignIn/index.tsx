@@ -26,11 +26,10 @@ function SignIn() {
     try {
       await session({ email, password })
       setSpinner(false)
-      navigate('/')
+      return navigate('/')
     } catch (error: any) {
       setSpinner(false)
-      alert('Erro: ' + error.message) // Use o error.message para mostrar a mensagem de erro
-      console.error('Erro ao tentar logar:', error)
+      return alert(error)
     }
   }
 

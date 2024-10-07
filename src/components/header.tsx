@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { CartWidget } from "../components/cart-widghet";
 import { Favorite } from "../components/favorite-widghet";
 import { Search } from 'lucide-react'
+import { api } from "../service/http";
 
 export function Header() {
+  const [data, setData] = useState()
   const { loggout, user, cargo } = useAuth()
   const [ImportImage, setImportImage] = useState('https://via.placeholder.com/54?text=Olá')
+  
+  useEffect(() => {
+   api.get('/products/list')
+    .then((res) => {
+     setData(res.data);
+    })
+   .catch((e) => {
+    console.error('Erro de rede: ', e.message);
+    console.error('Detalhes do erro:', e);
+   });
+  }, []);
 
   return (
    <div className="flex items-center justify-evenly color my-5 w-[90%] h-auto mx-auto">
@@ -30,12 +43,16 @@ export function Header() {
     <div className="flex items-center gap-4 text-white">
     <section className="flex items-center">
      {cargo === "usuario" ?
-      <p className="text-red-400  text-[1.1rem] font-semibold">
+      <p 
+       className="text-red-400  text-[1.1rem] font-semibold">
        <Favorite width={30} height={30}/>
        <CartWidget width={30} height={30}/>
       </p>
        :
-      <Link to='/createProduct'className="rounded-md bg-red-500 hover:bg-red-600 flex items-center justify-center transition-all text-[1rem] w-[10rem] h-[3.5rem]">Novo produto</Link>
+     <Link to='/createProduct'
+      className="rounded-md bg-red-500 hover:bg-red-600 flex items-center justify-center transition-all text-[1rem] w-[10rem] h-[3.5rem]">
+      Novo produto
+     </Link>
      }
      </section>
      <div className="w-[.2px] h-[3rem] bg-zinc-400"/>

@@ -9,11 +9,13 @@ function DashBoard() {
   useEffect(() => {
     api.get('/products/list')
       .then((res) => {
-        setData(res.data);
+        console.log(res.data);
+        setData(res.data.publicItens);
       })
       .catch((e) => {
         console.error('Erro de rede: ', e.message);
         console.error('Detalhes do erro:', e);
+        setData([]);
       });
   }, []);
 
@@ -24,9 +26,9 @@ function DashBoard() {
       </section>
       <h2 className="text-2xl font-extrabold text-gray-700">Mais vendidos</h2>
       <section className="flex flex-wrap justify-start">
-        {data?.map((info) => (
+        {data.map((info) => (
           <Product info={info} key={info.id} />
-        ))}
+        ))}cmd
       </section>
     </main>
   );

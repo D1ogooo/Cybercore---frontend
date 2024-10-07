@@ -14,9 +14,7 @@ const AuthContext = createContext({} as ContextType);
 
 function AuthProvider({ children }: AuthProviderType) {
 	const [data, setData] = useState<AuthData>({});
-	const [cargo, setCargo] = useState<"usuario" | "admin" | undefined>(
-		undefined,
-	);
+	const [cargo, setCargo] = useState<"usuario" | "admin">("usuario")
 
 	useEffect(() => {
 		const user = localStorage.getItem("@CyberCore:user");
@@ -47,8 +45,8 @@ function AuthProvider({ children }: AuthProviderType) {
 			api.defaults.headers.authorization = `Bearer ${token}`;
 			setData({ user, token });
 			window.location.reload();
-		} catch (e) {
-			console.log(e);
+		} catch (error){
+			throw new Error(error.response?.data.error);
 		}
 	}
 
