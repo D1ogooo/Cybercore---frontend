@@ -14,7 +14,11 @@ const AuthContext = createContext({} as ContextType);
 
 function AuthProvider({ children }: AuthProviderType) {
 	const [data, setData] = useState<AuthData>({});
+<<<<<<< HEAD
 	const [cargo, setCargo] = useState<"usuario" | "admin">("usuario")
+=======
+	const [cargo, setCargo] = useState<"usuario" | "admin">()
+>>>>>>> 9c68af12c85bc4c6910b1eaf63c319c59979fe47
 
 	useEffect(() => {
 		const user = localStorage.getItem("@CyberCore:user");
