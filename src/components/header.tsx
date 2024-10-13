@@ -61,7 +61,9 @@ export function Header() {
       <p className="text-[1.1rem]">Bem vindo (a) <br /><span className="text-purple-500">{user?.name}</span></p>
      </Link>
      </div>
-    <button type="button" className="text-red-500 font-medium" onClick={() => loggout()}>Sair</button>
+     <Link to='/' onClick={() => loggout()} className="text-red-500 font-medium">
+      Sair
+     </Link>
    </div>
   )
 }

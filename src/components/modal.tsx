@@ -79,7 +79,6 @@ export function Product({ info }: ProductType) {
 								onClick={() => handleSubmitFavorite({ productId: info.id })}
 							>
 								<Heart
-						      
 									height={36}
 									width={36}
 									className="bg-cinzaClaro cursor-pointer p-[5px] rounded-[1.25rem]"

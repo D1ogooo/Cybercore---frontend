@@ -47,4 +47,10 @@ export const DataCardItems: DadosCardItemsType[] = [
 		preco: "R$ 999,90",
 		image: `${secondImage}`,
 	},
+	{
+		id: 1,
+		info: "Monitor Gamer SuperFrame Vision, 24 Pol, Full HD, IPS, FreeSync, 1ms, 165Hz, HDMI/DP, SFV2409S",
+		preco: "R$ 999,90",
+		image: `${secondImage}`,
+	},
 ];

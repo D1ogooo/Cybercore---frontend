@@ -1,26 +1,21 @@
-import heartIcon from '/public/images/heart-cheio.png'
-import { api } from '../service/http'
-import { HeartIcon } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import heartIcon from '/public/images/heart-cheio.png';
+import { api } from '../service/http';
 
-export function Favoritar({ key }) {
-  async function handleDeleteFavorite (){
-   api.post(`/favorites/deleteFavorite/${key}`)
-   .then(() => {
-    window.location.reload()
-   })
-   .catch(() => {
-    return alert('error')
-   })
+export function Favoritar({ productId }: { productId: string }) {
+  async function handleDeleteFavorite(id: string) {
+    try {
+      await api.post(`/favorites/deleteFavorite/${id}`);
+      window.location.reload();
+    } catch (error) {
+      alert(error);
+    }
   }
 
   return (
-   <>
     <div className="flex justify-between items-center">
-    <button type='button' onClick={handleDeleteFavorite}>
-     <img src={heartIcon} className='cursor-pointer text-red-500' alt=''/>
-    </button>
+      <button type='button' onClick={() => handleDeleteFavorite(productId)}>
+        <img src={heartIcon} className='cursor-pointer text-red-500' alt='' />
+      </button>
     </div>
-   </>
-  )
+  );
 }

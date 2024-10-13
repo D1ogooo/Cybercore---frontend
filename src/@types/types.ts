@@ -28,6 +28,7 @@ export interface ContextType extends Pick<AuthData, "user"> {
 
 export interface ProductType {
 	info: DataType;
+	productId: string;
 }
 
 export interface ProductDetailtype {
@@ -54,6 +55,7 @@ export interface DadosCardItemsType {
 	info: string;
 	preco: string;
 	image: string;
+	key: string;
 }
 
 export interface LoginType {

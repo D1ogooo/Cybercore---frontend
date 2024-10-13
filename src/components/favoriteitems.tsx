@@ -13,7 +13,7 @@ export function FavoriteItems({ info, preco, image, key }: DadosCardItemsType) {
     <h3 className='text-cinzaClaro '>{info}</h3>
     <div className='flex items-center mt-2 gap-2'>
     <p className='text-cinzaClaro font-medium'>{preco}</p>
-    <Favoritar key={key}/>
+    <Favoritar productId={key}/>
     </div>
    </div>
    </div>

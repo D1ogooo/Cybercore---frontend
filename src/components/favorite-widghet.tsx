@@ -24,15 +24,18 @@ export function Favorite({ width = 2, height = 2, ...rest }: CartWidgetType) {
       <MenuButton px={4} py={2} transition="all 0.2s" borderRadius="md">
         <LucideHeart {...rest} width={width} height={height} />
       </MenuButton>
-      <MenuList className="w-[28rem] h-[30rem]">
-      {data.map((product) => (
+      <MenuList className="w-[28rem] h-[30rem] overflow-y-auto">
+      {data.length === 0 ? (
+       <div className="p-4">Nenhum item favoritado.</div>
+      ) : (data.map((product) => (
           <FavoriteItems
             key={product.id}
             info={product.sobre}
             preco={product.preco}
             image={product.imagem}
           />
-        ))}
+        ))
+      )}
         <div className="flex items-center justify-between pl-4 pr-4 pb-1 pt-4" />
       </MenuList>
     </Menu>

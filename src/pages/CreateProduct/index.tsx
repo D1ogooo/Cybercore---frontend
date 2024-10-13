@@ -4,7 +4,7 @@ import { api } from "../../service/http";
 import { useNavigate } from "react-router-dom";
 
 export function CreateProduct() {
-	const [image, setImage] = useState<File | null>(null); 
+	const [image, setImage] = useState<File | null>(null);
 	const [preco, setPreco] = useState<string>("");
 	const [sobre, setSobre] = useState<string>("");
 	const navigate = useNavigate();
@@ -12,7 +12,7 @@ export function CreateProduct() {
 	function handleImage(e: React.ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0];
 		if (file) {
-			setImage(file); 
+			setImage(file);
 		}
 	}
 
@@ -67,7 +67,6 @@ export function CreateProduct() {
 								</label>
 							</section>
 							<form>
-							
 								<div className="mt-4">
 									<label className="block mb-2 text-sm text-gray-600">
 										Valor

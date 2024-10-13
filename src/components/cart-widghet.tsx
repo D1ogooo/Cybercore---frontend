@@ -21,7 +21,7 @@ export function CartWidget({ width = 2, height = 2, ...rest}: CartWidgetType) {
    >
    <ShoppingBasket color={"#fff"} {...rest} width={width} height={height}/>
     </MenuButton>
-     <MenuList className='w-[28rem]'>
+     <MenuList className='w-[28rem] h-[30rem] overflow-y-auto'>
      {DataCardItems.map((data) => (
 
       <CardItems
