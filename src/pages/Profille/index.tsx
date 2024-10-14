@@ -1,26 +1,56 @@
-import { useState } from "react";
-import { FiCamera } from "react-icons/fi";
-import { Eye, Lock } from "lucide-react";
-import { api } from "../../service/http";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
+import { FiCamera } from "react-icons/fi";
+import { Eye, Lock, Mail } from "lucide-react";
+import { api } from "../../service/http";
 
 function Profille() {
+	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
+	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
 	const [image, setImage] = useState<File | null>(null);
+	const { user } = useAuth();
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState<boolean>(true)
+	const [avatar, setAvatar] = useState(user?.image)
+
+	useEffect(() => {
+		const checkUser = () => {
+		 setLoading(false);
+		};
+		 checkUser();
+		}, []);
+	
+		if (loading) {
+			return (
+				<div className="flex items-center justify-center h-screen">
+					<Spinner size="xl" />
+				</div>
+			);
+		}
 
 	function handleImage(e: React.ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0];
 		if (file) {
 			setImage(file);
+			const imagePreview = URL.createObjectURL(file)
+			setAvatar(imagePreview)
 		}
 	}
 
 	function handleSubmit(e: { preventDefault: () => void }) {
 		e.preventDefault();
+		const verifyPassword = password.length !== confirmPassword.length
+		if(verifyPassword){
+     return alert("error: As senhas declaradas precisam ser iguais ")
+		}
+
 		const formData = new FormData();
 		formData.append("image", image);
+		formData.append("email", email);
 		formData.append("password", password);
 
 		if (!image) {
@@ -45,13 +75,19 @@ function Profille() {
 	return (
 		<div className="flex items-center justify-center my-[10rem]">
 			<section className="w-[30%] h-[60vh] flex items-center justify-center rounded-sm">
-				<form className=" flex flex-col gap-3 items-center p-2">
+				<form className=" flex flex-col gap-3 items-center p-2 text-white">
 					<section className="relative w-[186px] h-[186px] mx-auto mb-8">
+						{user?.image === null ? 
 						<img
-							src="https://github.com/D1ogooo.png"
+							src={`${avatar}`}
 							alt="Foto do usuário"
 							className="w-[186px] h-[186px] rounded-full"
-						/>
+						/> :
+						<img
+							src={`${apiImage}${avatar}`}
+							alt="Foto do usuário"
+							className="w-[186px] h-[186px] rounded-full"
+						/>}
 						<label
 							htmlFor="avatar"
 							className="w-[38px] h-[38px] bg-gray-500 rounded-full flex items-center justify-center absolute bottom-[7px] right-[7px] cursor-pointer"
@@ -67,7 +103,24 @@ function Profille() {
 						</label>
 					</section>
 
-					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 mt-[-20px] min-w-[20rem]">
+					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 min-w-[20rem]">
+						<Mail
+							className="text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
+							height={19}
+						/>
+						<input
+							onChange={(e) => setEmail(e.target.value)}
+							type="email"
+							placeholder="Declare seu email..."
+							className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
+						/>
+						<Eye
+							className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+							height={21}
+						/>
+					</label>
+					
+					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 min-w-[20rem]">
 						<Lock
 							className="text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
 							height={19}
@@ -83,6 +136,7 @@ function Profille() {
 							height={21}
 						/>
 					</label>
+
 					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 min-w-[20rem]">
 						<Lock
 							className="text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"

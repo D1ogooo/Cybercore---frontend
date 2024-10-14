@@ -7,7 +7,7 @@ import { Spinner } from "@chakra-ui/react";
 import { Trash2 } from "lucide-react";
 
 function ProductDetail() {
-	const [data, setData] = useState<ProductDetailtype>({});
+	const [data, setData] = useState<ProductDetailtype | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
 	const { id } = useParams();

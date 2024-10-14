@@ -31,6 +31,14 @@ function AuthProvider({ children }: AuthProviderType) {
 		}
 	}, []);
 
+  async function handleImage({}) {
+   try {
+    
+	 } catch() {
+    
+	 }
+	}
+
 	async function session({ email, password }: LoginType) {
 		try {
 			const res = await api.post("/users/session", { email, password });

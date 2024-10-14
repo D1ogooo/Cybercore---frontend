@@ -9,7 +9,9 @@ import { api } from "../service/http";
 export function Header() {
   const [data, setData] = useState()
   const { loggout, user, cargo } = useAuth()
-  const [ImportImage, setImportImage] = useState('https://via.placeholder.com/54?text=Olá')
+  const imagePreview = user === null ? 'https://via.placeholder.com/54?text=Olá' : user?.image
+  const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
+  // const [ImportImage, setImportImage] = useState(imagePreview)
   
   useEffect(() => {
    api.get('/products/list')
@@ -57,7 +59,7 @@ export function Header() {
      </section>
      <div className="w-[.2px] h-[3rem] bg-zinc-400"/>
      <Link to='/profille' className="flex gap-2 items-center">
-      <img src={ImportImage} className="h-[3.8rem] w-[3.8rem] rounded-full" width={80} height={80} alt=""/>
+      <img src={`${apiImage}${user?.image}`} className="h-[3.8rem] w-[3.8rem] rounded-full" width={80} height={80} alt=""/>
       <p className="text-[1.1rem]">Bem vindo (a) <br /><span className="text-purple-500">{user?.name}</span></p>
      </Link>
      </div>

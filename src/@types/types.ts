@@ -15,6 +15,7 @@ export interface AuthData {
 	user?: {
 		id: string;
 		name: string;
+		image: string | null;
 	};
 	token?: string;
 }
