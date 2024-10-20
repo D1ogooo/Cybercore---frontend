@@ -7,14 +7,16 @@ import type {
 	RegisterType,
 	ContextType,
 	DecodedTokenType,
+	FormDataType,
 } from "../@types/types";
 import { api } from "../service/http";
+import type { AxiosError } from "axios";
 
 const AuthContext = createContext({} as ContextType);
 
 function AuthProvider({ children }: AuthProviderType) {
 	const [data, setData] = useState<AuthData>({});
-	const [cargo, setCargo] = useState<"usuario" | "admin">()
+	const [cargo, setCargo] = useState<"usuario" | "admin" | undefined>()
 
 	useEffect(() => {
 		const user = localStorage.getItem("@CyberCore:user");
@@ -31,12 +33,22 @@ function AuthProvider({ children }: AuthProviderType) {
 		}
 	}, []);
 
-  async function handleImage({}) {
-   try {
-    
-	 } catch() {
-    
-	 }
+  async function handleChangeImage({ formData }: FormDataType) {
+		try {
+		 api
+			.patch("/users/updateImage", formData, {
+			 headers: {
+			  "Content-Type": "multipart/form-data",
+		  },
+			})
+			 .then((res) => { 
+				 localStorage.removeItem("@CyberCore:user");
+				 localStorage.setItem("@CyberCore:user", JSON.stringify(res.data.user));
+			})
+		} catch (error) {
+			const axiosError = error as AxiosError;
+			return alert(axiosError?.response?.data)
+		}
 	}
 
 	async function session({ email, password }: LoginType) {
@@ -53,8 +65,9 @@ function AuthProvider({ children }: AuthProviderType) {
 			api.defaults.headers.authorization = `Bearer ${token}`;
 			setData({ user, token });
 			window.location.reload();
-		} catch (error){
-			throw new Error(error.response?.data.error);
+		} catch (error) {
+			const axiosError = error as AxiosError;
+			return alert(axiosError?.response?.data)
 		}
 	}
 
@@ -75,10 +88,17 @@ function AuthProvider({ children }: AuthProviderType) {
 
 	return (
 		<AuthContext.Provider
-			value={{ cargo, user: data.user, session, register, loggout }}
+		 value={{
+		  cargo,
+			user: data.user,
+			session,
+			register,
+			loggout,
+			handleChangeImage,
+	   }}
 		>
-			{children}
-		</AuthContext.Provider>
+		{children}
+	 </AuthContext.Provider>
 	);
 }
 

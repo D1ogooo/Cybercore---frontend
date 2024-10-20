@@ -20,12 +20,23 @@ export interface AuthData {
 	token?: string;
 }
 
+export interface FormDataType {
+	formData: {
+		image: string;
+		email: string;
+		password: string;
+	}
+} 
+
 export interface ContextType extends Pick<AuthData, "user"> {
 	loggout: () => void;
 	session: (data: LoginType) => Promise<void>;
 	register: (data: RegisterType) => Promise<void>;
-	cargo: "usuario" | "admin";
+	handleChangeImage: (data: FormDataType) => Promise<void>;
+	cargo: "usuario" | "admin" | undefined;
+	formData?: FormDataType;
 }
+
 
 export interface ProductType {
 	info: DataType;
@@ -75,5 +86,5 @@ export interface RegisterType {
 }
 
 export interface DecodedTokenType {
-	role: "usuario" | "admin";
+	role: "usuario" | "admin" | undefined;
 }

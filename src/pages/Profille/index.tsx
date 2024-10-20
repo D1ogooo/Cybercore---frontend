@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ErrorInfo } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
@@ -11,8 +11,8 @@ function Profille() {
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
-	const [image, setImage] = useState<File | null>(null);
-	const { user } = useAuth();
+	const [image, setImage] = useState<File | null >(null);
+	const { user, handleChangeImage } = useAuth();
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState<boolean>(true)
 	const [avatar, setAvatar] = useState(user?.image)
@@ -56,20 +56,14 @@ function Profille() {
 		if (!image) {
 			return alert("Error, imagem não declarada");
 		}
-
-		api
-			.post("/users/updateImage", formData, {
-				headers: {
-					"Content-Type": "multipart/form-data",
-				},
-			})
-			.then(() => {
-				alert("💡Imagem adicionada com sucesso!");
-				navigate("/");
-			})
-			.catch((e) => {
-				alert(e);
-			});
+		handleChangeImage(formData)
+		.then(() => {
+		 alert("💡Imagem adicionada com sucesso!");
+		 navigate("/");
+		})
+		.catch((e: ErrorInfo) => {
+		 alert(e);
+		});
 	}
 
 	return (
