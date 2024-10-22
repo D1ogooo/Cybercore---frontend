@@ -9,12 +9,10 @@ function DashBoard() {
   useEffect(() => {
     api.get('/products/list')
       .then((res) => {
-        console.log(res.data);
         setData(res.data.publicItens);
       })
       .catch((e) => {
-        console.error('Erro de rede: ', e.message);
-        console.error('Detalhes do erro:', e);
+        console.error('Error')
         setData([]);
       });
   }, []);
