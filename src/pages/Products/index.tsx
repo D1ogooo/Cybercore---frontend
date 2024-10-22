@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import type { ProductDetailtype } from "../../@types/types";
-import { Counter } from "../../components/contador";
 import { api } from "../../service/http";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
 import { Trash2 } from "lucide-react";
 
@@ -10,7 +9,8 @@ function ProductDetail() {
 	const [data, setData] = useState<ProductDetailtype | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
-	const { id } = useParams();
+	const { id } = useParams<{ id: string }>()
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -28,15 +28,15 @@ function ProductDetail() {
 		fetchData();
 	}, [id]);
 
-  // function handleDeleteProduct ({ id }: { id: string }) {
-	// 	api.post(`/products/delete/${id}`)
-	// 	.then(() => {
-	// 	 window.location.reload()
-	// 	})
-	// 	.catch(() => {
-	// 	 return alert('error')
-	// 	})
-	// }
+  function handleDeleteProduct ({ id }: { id: string }) {
+		api.post(`/products/delete/${id}`)
+		.then(() => {
+		 navigate('/')
+		})
+		.catch(() => {
+		 return alert('error')
+		})
+	}
 
 	if (loading) {
 		return (
@@ -51,21 +51,21 @@ function ProductDetail() {
 			<div className="flex justify-center items-center space-x-8 h-[30rem] rounded-md p-6">
 				<section className="flex justify-center items-center p-[2rem]">
 					<img
-						src={`${apiImage}${data.imagem}`}
-						alt={data.sobre || "Produto"}
+						src={`${apiImage}${data?.imagem}`}
+						alt={data?.sobre || "Produto"}
 						className="object-contain w-[15rem] h-[15rem]"
 					/>
 				</section>
 				<section className="flex flex-col justify-center w-full h-auto">
 					<div className="w-[20rem] mb-2">
 						<h3 className="text-cinzaClaro text-left font-medium">
-							{data.sobre}
+							{data?.sobre}
 						</h3>
-						<p className="text-cinzaEscuro w-full mx-auto">{data.preco}</p>
+						<p className="text-cinzaEscuro w-full mx-auto">{data?.preco}</p>
 					</div>
 				</section>
 					<button
-					// onClick={handleDeleteProduct}
+					onClick={() => handleDeleteProduct({ id })}
 					type="button"
 					className="flex p-[0.5rem] justify-center items-center gap-[0.5rem]
       ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer"
