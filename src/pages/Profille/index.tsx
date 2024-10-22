@@ -59,7 +59,7 @@ function Profille() {
 		handleChangeImage(formData)
 		.then(() => {
 		 alert("💡Imagem adicionada com sucesso!");
-		 navigate("/");
+		 return navigate("/");
 		})
 		.catch((e: ErrorInfo) => {
 		 alert(e);
