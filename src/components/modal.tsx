@@ -4,9 +4,10 @@ import type { HandleSubmitId, ProductType } from "../@types/types";
 import { Link } from "react-router-dom";
 import { api } from "../service/http";
 
-export function Product({ info }: ProductType) {
+export function Product({ info, productId }: ProductType) {
 	const { cargo } = useAuth();
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
+	
 	async function handleSubmit({ id }: HandleSubmitId) {
 		await api
 			.post("/cart/create", { id: id })
@@ -19,7 +20,6 @@ export function Product({ info }: ProductType) {
 	}
 
 	function handleSubmitFavorite({ productId }: HandleSubmitId) {
-
 		api
 			.post(`/favorites/favorite/${productId}`)
 			.then(() => {

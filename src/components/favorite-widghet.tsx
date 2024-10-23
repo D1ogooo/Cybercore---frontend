@@ -30,6 +30,7 @@ export function Favorite({ width = 2, height = 2, ...rest }: CartWidgetType) {
       ) : (data.map((product) => (
           <FavoriteItems
             key={product.id}
+            productId={product.id}
             info={product.sobre}
             preco={product.preco}
             image={product.imagem}

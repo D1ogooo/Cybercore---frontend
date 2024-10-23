@@ -9,8 +9,8 @@ function ProductDetail() {
 	const [data, setData] = useState<ProductDetailtype | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
-	const { id } = useParams<{ id: string }>()
-	const navigate = useNavigate()
+	const { id } = useParams<{ id: string }>();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -28,12 +28,12 @@ function ProductDetail() {
 		fetchData();
 	}, [id]);
 
-  function handleDeleteProduct ({ id }: { id: string }) {
+	async function handleDeleteProduct({ id }: { id: string }) {
 		try {
 			api.post(`/products/delete/${id}`)
-			return navigate('/')
-		} catch(error) {
-		 return alert('error')
+			navigate("/")
+		} catch (error) {
+			return alert("error");
 		}
 	}
 
@@ -63,13 +63,13 @@ function ProductDetail() {
 						<p className="text-cinzaEscuro w-full mx-auto">{data?.preco}</p>
 					</div>
 				</section>
-					<button
+				<button
 					onClick={() => handleDeleteProduct({ id })}
 					type="button"
 					className="flex p-[0.5rem] justify-center items-center gap-[0.5rem]
       ml-[0.5rem] w-[2.375rem] h-[2.375rem] rounded-[0.375rem] border-none bg-pupleDark cursor-pointer"
 				>
-					<Trash2 height={22}/>
+					<Trash2 height={22} />
 				</button>
 			</div>
 		</div>

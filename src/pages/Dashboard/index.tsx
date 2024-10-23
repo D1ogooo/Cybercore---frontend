@@ -25,7 +25,7 @@ function DashBoard() {
       <h2 className="text-2xl font-extrabold text-gray-700">Mais vendidos</h2>
       <section className="flex flex-wrap justify-start">
         {data.map((info) => (
-          <Product key={info.id} info={info} productId={info.id} />
+          <Product info={info} productId={info.id} key={info.id}/>
         ))}
       </section>
     </main>

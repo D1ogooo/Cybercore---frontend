@@ -1,11 +1,15 @@
 import heartIcon from '/public/images/heart-cheio.png';
 import { api } from '../service/http';
 
-export function Favoritar({ productId }: { productId: string }) {
+interface FavoritarProps {
+  productId: string;
+}
+
+export function Favoritar({ productId  }: FavoritarProps) {
   async function handleDeleteFavorite(id: string) {
     try {
       await api.post(`/favorites/deleteFavorite/${id}`);
-      window.location.reload();
+      window.location.reload(); 
     } catch (error) {
       alert(error);
     }
