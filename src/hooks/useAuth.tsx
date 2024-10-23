@@ -35,15 +35,17 @@ function AuthProvider({ children }: AuthProviderType) {
 
   async function handleChangeImage({ formData }: FormDataType) {
 		try {
-		 api
+			api
 			.patch("/users/updateImage", formData, {
-			 headers: {
-			  "Content-Type": "multipart/form-data",
-		  },
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
 			})
 			 .then((res) => { 
-				 localStorage.removeItem("@CyberCore:user");
-				 localStorage.setItem("@CyberCore:user", JSON.stringify(res.data.user));
+				 console.log(res.data.user)
+				 localStorage.removeItem("@CyberCore:user")
+				 localStorage.setItem("@CyberCore:user", JSON.stringify(res.data.user))
+        window.location.reload()
 			})
 		} catch (error) {
 			const axiosError = error as AxiosError;
@@ -67,7 +69,8 @@ function AuthProvider({ children }: AuthProviderType) {
 			window.location.reload();
 		} catch (error) {
 			const axiosError = error as AxiosError;
-			return alert(axiosError?.response?.data)
+			const errorMessage = axiosError.response?.data.error || "Erro desconhecido";
+			return alert(errorMessage);
 		}
 	}
 

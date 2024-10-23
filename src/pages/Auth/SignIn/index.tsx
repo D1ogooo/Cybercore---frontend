@@ -61,7 +61,6 @@ function SignIn() {
               placeholder="Declare sua senha..."
               className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
             />
-            <Eye className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" height={21} />
           </label>
           <button type="button" onClick={handleSubmit} className="w-full text-white font-semibold rounded-md h-12 p-2 cursor-pointer bg-purple-600">
             {spinner ? 

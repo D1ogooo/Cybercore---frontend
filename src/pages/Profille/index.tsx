@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
 import { FiCamera } from "react-icons/fi";
 import { Eye, Lock, Mail } from "lucide-react";
-import { api } from "../../service/http";
+import type { FormDataType } from "../../@types/types";
+// import { api } from "../../service/http";
 
 function Profille() {
 	const apiImage = import.meta.env.VITE_REACT_APP_API_LOGIN_URL;
@@ -15,7 +16,7 @@ function Profille() {
 	const { user, handleChangeImage } = useAuth();
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState<boolean>(true)
-	const [avatar, setAvatar] = useState(user?.image)
+	const [avatar, setAvatar] = useState(user?.image ? user.image : "https://via.placeholder.com/54?text=Olá")
 
 	useEffect(() => {
 		const checkUser = () => {
@@ -56,10 +57,9 @@ function Profille() {
 		if (!image) {
 			return alert("Error, imagem não declarada");
 		}
-		handleChangeImage(formData)
+		handleChangeImage({ formData })
 		.then(() => {
 		 alert("💡Imagem adicionada com sucesso!");
-		 return navigate("/");
 		})
 		.catch((e: ErrorInfo) => {
 		 alert(e);
@@ -71,9 +71,9 @@ function Profille() {
 			<section className="w-[30%] h-[60vh] flex items-center justify-center rounded-sm">
 				<form className=" flex flex-col gap-3 items-center p-2 text-white">
 					<section className="relative w-[186px] h-[186px] mx-auto mb-8">
-						{user?.image === null ? 
+						{user?.image === null ?
 						<img
-							src={`${avatar}`}
+						src={`${avatar}`}
 							alt="Foto do usuário"
 							className="w-[186px] h-[186px] rounded-full"
 						/> :
@@ -108,10 +108,6 @@ function Profille() {
 							placeholder="Declare seu email..."
 							className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
 						/>
-						<Eye
-							className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-							height={21}
-						/>
 					</label>
 					
 					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 min-w-[20rem]">
@@ -125,10 +121,6 @@ function Profille() {
 							placeholder="Declare sua senha..."
 							className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
 						/>
-						<Eye
-							className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-							height={21}
-						/>
 					</label>
 
 					<label className="bg-gray-800 flex rounded-sm flex-1 relative p-2 min-w-[20rem]">
@@ -141,10 +133,6 @@ function Profille() {
 							type="password"
 							placeholder="Confirme sua senha..."
 							className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
-						/>
-						<Eye
-							className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-							height={21}
 						/>
 					</label>
 					<button

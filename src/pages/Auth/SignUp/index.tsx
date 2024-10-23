@@ -3,8 +3,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import BackgroundImage from "../../../../public/images/unsplash_YI_9SivVt_s.png";
 import ComputadorImage from '../../../../public/images/configurar.png'
-import { Spinner } from '@chakra-ui/react'
-import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
+import { Eye, Lock, Mail, User } from 'lucide-react';
 
 function SignUp() {
   const [name, setName] = useState('')
@@ -12,7 +11,6 @@ function SignUp() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passwordEye, setPasswordEye] = useState<boolean>()
-  const [confirmPasswordEye, setConfirmPasswordEye] = useState<boolean>()
   const [spinner, setSpinner] = useState<boolean>(false)
   const { register } = useAuth()
   const navigate = useNavigate()
@@ -69,7 +67,6 @@ function SignUp() {
               placeholder="Declare sua senha..."
               className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
             />
-            <Eye className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" height={21} />
           </label>
           <label className="bg-gray-100 flex rounded-sm w-full relative p-2">
             <Lock className="text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" height={19} />
@@ -79,7 +76,6 @@ function SignUp() {
               placeholder="Confirme sua senha..."
               className="w-full pl-10 border-none bg-transparent outline-none focus:outline-none focus:ring-0"
             />
-           <Eye  onClick={() => setPasswordEye(!passwordEye)} className="text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" height={21} /> 
           </label>
          <input type="submit" value='Cadastrar' onClick={handleSubmit} className="w-full text-white font-semibold rounded-md h-12 p-2 cursor-pointer bg-purple-600"/>
           <p className='text-gray-600 font-semibold text-center'>
