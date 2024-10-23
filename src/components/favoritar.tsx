@@ -8,7 +8,7 @@ interface FavoritarProps {
 export function Favoritar({ productId  }: FavoritarProps) {
   async function handleDeleteFavorite(id: string) {
     try {
-      await api.post(`/favorites/deleteFavorite/${id}`);
+      await api.delete(`/favorites/deleteFavorite/${id}`);
       window.location.reload(); 
     } catch (error) {
       alert(error);
