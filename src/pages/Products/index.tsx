@@ -29,13 +29,12 @@ function ProductDetail() {
 	}, [id]);
 
   function handleDeleteProduct ({ id }: { id: string }) {
-		api.post(`/products/delete/${id}`)
-		.then(() => {
-		 navigate('/')
-		})
-		.catch(() => {
+		try {
+			api.post(`/products/delete/${id}`)
+			return navigate('/')
+		} catch(error) {
 		 return alert('error')
-		})
+		}
 	}
 
 	if (loading) {
