@@ -30,7 +30,7 @@ function ProductDetail() {
 
 	async function handleDeleteProduct({ id }: { id: string }) {
 		try {
-			api.post(`/products/delete/${id}`)
+			api.delete(`/products/delete/${id}`)
 			navigate("/")
 		} catch (error) {
 			return alert("error");
